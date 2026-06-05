@@ -9,24 +9,25 @@ interface Props {
 export default function MicButton({ onTranscript }: Props) {
   const [listening, setListening] = useState(false)
   const [error, setError]         = useState('')
-  const recogRef = useRef<SpeechRecognition | null>(null)
+  const recogRef = useRef<any>(null)
 
   const start = () => {
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
+    const win = window as any
+    const SR = win.SpeechRecognition || win.webkitSpeechRecognition
     if (!SR) {
-      setError('Your browser doesn\'t support voice input. Try Chrome or Edge.')
+      setError("Your browser doesn't support voice input. Try Chrome or Edge.")
       return
     }
 
-    const recog: SpeechRecognition = new SR()
-    recog.lang           = 'en-US'
-    recog.interimResults = false
+    const recog = new SR()
+    recog.lang            = 'en-US'
+    recog.interimResults  = false
     recog.maxAlternatives = 1
 
     recog.onstart  = () => { setListening(true); setError('') }
     recog.onend    = () => setListening(false)
-    recog.onerror  = (e) => { setListening(false); setError(`Mic error: ${e.error}`) }
-    recog.onresult = (e) => {
+    recog.onerror  = (e: any) => { setListening(false); setError(`Mic error: ${e.error}`) }
+    recog.onresult = (e: any) => {
       const transcript = e.results[0][0].transcript
       onTranscript(transcript)
     }
@@ -59,10 +60,8 @@ export default function MicButton({ onTranscript }: Props) {
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
             stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             {listening ? (
-              // Stop icon
               <rect x="6" y="6" width="12" height="12" rx="2" fill="white" stroke="none" />
             ) : (
-              // Mic icon
               <>
                 <rect x="9" y="2" width="6" height="12" rx="3" />
                 <path d="M5 10a7 7 0 0 0 14 0" />
