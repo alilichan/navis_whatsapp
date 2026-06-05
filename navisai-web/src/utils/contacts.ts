@@ -7,13 +7,13 @@ export interface Contact {
 // Demo contacts shown when the Web Contacts API is unavailable
 // (most browsers/desktop don't support it — only Chrome on Android)
 const DEMO_CONTACTS: Contact[] = [
-  { id: '1', name: 'John Tan',    phone: '+65 9123 4567' },
-  { id: '2', name: 'John Lee',    phone: '+65 8234 5678' },
-  { id: '3', name: 'Sarah Wong',  phone: '+65 9345 6789' },
-  { id: '4', name: 'David Lim',   phone: '+65 8456 7890' },
-  { id: '5', name: 'Mum',         phone: '+65 9567 8901' },
-  { id: '6', name: 'Alice Ng',    phone: '+65 8678 9012' },
-  { id: '7', name: 'Bob Chen',    phone: '+65 9789 0123' },
+  { id: '1', name: 'John Tan',    phone: '+65 8854 7138' },
+  { id: '2', name: 'John Lee',    phone: '+65 8854 7138' },
+  { id: '3', name: 'Sarah Wong',  phone: '+65 8854 7138' },
+  { id: '4', name: 'David Lim',   phone: '+65 8854 7138' },
+  { id: '5', name: 'Mum',         phone: '+65 8854 7138' },
+  { id: '6', name: 'Alice Ng',    phone: '+65 8854 7138' },
+  { id: '7', name: 'Bob Chen',    phone: '+65 8854 7138' },
 ]
 
 /**
